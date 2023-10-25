@@ -27,37 +27,42 @@ export default function App() {
     try {
       let expresion = operacion;
       let absoluto = false;
-      let seno = false;
+      let invtrig = false;
 
       if (expresion.startsWith("|") && expresion.endsWith("|")) {
-        expresion = expresion.slice(1, -1); // Elimina los símbolos de valor absoluto
-        absoluto = true; // Indica que se debe calcular el valor absoluto
+        expresion = expresion.slice(1, -1);
+        absoluto = true;
       }
 
-      if (expresion.startsWith("sen(")){
-        seno = true;
+      if (expresion.includes("arcsin(")||expresion.includes("arccs(")||expresion.includes("arctng(")){
+        invtrig = true;
       }
-      console.log(seno);
+      console.log(invtrig);
       expresion = expresion.replace(/\^/g, '**');
       expresion = expresion.replace(/÷/g, '/'); 
       expresion = expresion.replace(/√/g, 'Math.sqrt(');
       expresion = expresion.replace(/×/g, '*');
+      expresion = expresion.replace(/π/g, 'Math.PI');
       expresion = expresion.replace(/log\(/g, 'Math.log10(');
       expresion = expresion.replace(/ln\(/g, 'Math.log(');
-      expresion = expresion.replace(/sen\(/g, 'Math.sin(');
+      expresion = expresion.replace(/sen\(/g, 'Math.sin((Math.PI/180)*');
+      expresion = expresion.replace(/cos\(/g, 'Math.cos((Math.PI/180)*');
+      expresion = expresion.replace(/tan\(/g, 'Math.tan((Math.PI/180)*');
+      expresion = expresion.replace(/arcsin\(/g, 'Math.asin(');
+      expresion = expresion.replace(/arccs\(/g, 'Math.acos(');
+      expresion = expresion.replace(/arctng\(/g, 'Math.atan(');
+      console.log(expresion);
   
       if (expresion.includes('Math.sqrt(')) {
         expresion += ')';
       }
-  
+
       let res = eval(expresion);
+      console.log(res);
   
       if (absoluto) {
         res = Math.abs(res); 
       }
-      /*if (seno) {
-        res = res*(180/Math.PI); 
-      }*/
   
       setResultado(res.toString());
       setAns(res.toString());
@@ -78,9 +83,13 @@ export default function App() {
         setOperacion(valorabsoluto);
       }else if(nuevaOperacion.endsWith("ln")){
         setOperacion(nuevaOperacion.slice(0, -2));
-      }else if(nuevaOperacion.endsWith("log")){
+      }else if(nuevaOperacion.endsWith("log")||nuevaOperacion.endsWith("sen")||nuevaOperacion.endsWith("cos")||nuevaOperacion.endsWith("tan")){
         setOperacion(nuevaOperacion.slice(0, -3));
-      } else {
+      }else if(nuevaOperacion.endsWith("arcsin")||nuevaOperacion.endsWith("arctng")){
+        setOperacion(nuevaOperacion.slice(0, -6));
+      } else if(nuevaOperacion.endsWith("arccs")){
+        setOperacion(nuevaOperacion.slice(0, -5));
+      }else {
         setOperacion(nuevaOperacion);
       }
     }
@@ -119,7 +128,7 @@ export default function App() {
           </TouchableOpacity>
         </View>
         <View style={styles.div_fila}>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('arctan(')}>
+          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('arctng(')}>
             <Text style={styles.buttonText}>arctan</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('1/x')}>
@@ -136,7 +145,7 @@ export default function App() {
           </TouchableOpacity>
         </View>
         <View style={styles.div_fila}>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('arccos(')}>
+          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('arccs(')}>
             <Text style={styles.buttonText}>arccos</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('%')}>
@@ -153,8 +162,8 @@ export default function App() {
           </TouchableOpacity>
         </View>
         <View style={styles.div_fila}>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('arcsen(')}>
-            <Text style={styles.buttonText}>arcsen</Text>
+          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('arcsin(')}>
+            <Text style={styles.buttonText}>arcsin</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('7')}>
             <Text style={styles.buttonText}>7</Text>
@@ -207,8 +216,8 @@ export default function App() {
           <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('sen(')}>
             <Text style={styles.buttonText}>sen</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('')}>
-            <Text style={styles.buttonText}>+/-</Text>
+          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('π')}>
+            <Text style={styles.buttonText}>π</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('0')}>
             <Text style={styles.buttonText}>0</Text>
@@ -287,4 +296,3 @@ const styles = StyleSheet.create({
   },
   
 });
-
