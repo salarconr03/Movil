@@ -111,59 +111,59 @@ export default function App() {
       </View>
       <View style={styles.div_botones}>
         <View style={styles.div_fila}>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('log(')}>
-            <Text style={styles.buttonText}>log</Text>
+          <TouchableOpacity style={styles.boton_trig} onPress={() => agregarTexto('log(')}>
+            <Text style={styles.buttonText_trig}>log</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('ln(')}>
-            <Text style={styles.buttonText}>ln</Text>
+          <TouchableOpacity style={styles.boton_trig} onPress={() => agregarTexto('ln(')}>
+            <Text style={styles.buttonText_trig}>ln</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('Ans')}>
-            <Text style={styles.buttonText}>Ans</Text>
+            <Text style={styles.buttonText_trig}>Ans</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.boton_operaciones} onPress={clear}>
-            <Text style={styles.buttonText}>AC</Text>
+            <Text style={styles.buttonText_trig}>AC</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.boton_operaciones} onPress={borrarUltimoCaracter}>
-            <Text style={styles.buttonText}>DEL</Text>
+            <Text style={styles.buttonText_trig}>DEL</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.div_fila}>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('arctng(')}>
-            <Text style={styles.buttonText}>arctan</Text>
+          <TouchableOpacity style={styles.boton_trig} onPress={() => agregarTexto('arctng(')}>
+            <Text style={styles.buttonText_trig}>arctan</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('1/x')}>
+          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('1/x')}>
             <Text style={styles.buttonText}>1/x</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('|x|')}>
+          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('|x|')}>
             <Text style={styles.buttonText}>|x|</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('(')}>
+          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('(')}>
             <Text style={styles.buttonText}>(</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto(')')}>
+          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto(')')}>
             <Text style={styles.buttonText}>)</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.div_fila}>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('arccs(')}>
-            <Text style={styles.buttonText}>arccos</Text>
+          <TouchableOpacity style={styles.boton_trig} onPress={() => agregarTexto('arccs(')}>
+            <Text style={styles.buttonText_trig}>arccos</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('%')}>
+          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('%')}>
             <Text style={styles.buttonText}>%</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('^')}>
+          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('^')}>
             <Text style={styles.buttonText}>^</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('√')}>
+          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('√')}>
             <Text style={styles.buttonText}>√</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('÷')}>
+          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('÷')}>
             <Text style={styles.buttonText}>÷</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.div_fila}>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('arcsin(')}>
-            <Text style={styles.buttonText}>arcsin</Text>
+          <TouchableOpacity style={styles.boton_trig} onPress={() => agregarTexto('arcsin(')}>
+            <Text style={styles.buttonText_trig}>arcsin</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('7')}>
             <Text style={styles.buttonText}>7</Text>
@@ -174,13 +174,13 @@ export default function App() {
           <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('9')}>
             <Text style={styles.buttonText}>9</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('×')}>
+          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('×')}>
             <Text style={styles.buttonText}>×</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.div_fila}>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('tan(')}>
-            <Text style={styles.buttonText}>tan</Text>
+          <TouchableOpacity style={styles.boton_trig} onPress={() => agregarTexto('tan(')}>
+            <Text style={styles.buttonText_trig}>tan</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('4')}>
             <Text style={styles.buttonText}>4</Text>
@@ -191,13 +191,13 @@ export default function App() {
           <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('6')}>
             <Text style={styles.buttonText}>6</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('+')}>
+          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('+')}>
             <Text style={styles.buttonText}>+</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.div_fila}>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('cos(')}>
-            <Text style={styles.buttonText}>cos</Text>
+          <TouchableOpacity style={styles.boton_trig} onPress={() => agregarTexto('cos(')}>
+            <Text style={styles.buttonText_trig}>cos</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('1')}>
             <Text style={styles.buttonText}>1</Text>
@@ -208,13 +208,13 @@ export default function App() {
           <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('3')}>
             <Text style={styles.buttonText}>3</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('-')}>
+          <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('-')}>
             <Text style={styles.buttonText}>-</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.div_fila}>
-          <TouchableOpacity style={styles.boton_operaciones} onPress={() => agregarTexto('sen(')}>
-            <Text style={styles.buttonText}>sen</Text>
+          <TouchableOpacity style={styles.boton_trig} onPress={() => agregarTexto('sen(')}>
+            <Text style={styles.buttonText_trig}>sen</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('π')}>
             <Text style={styles.buttonText}>π</Text>
@@ -225,8 +225,8 @@ export default function App() {
           <TouchableOpacity style={styles.boton_numeros} onPress={() => agregarTexto('.')}>
             <Text style={styles.buttonText}>.</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.boton_igual} onPress={calcularResultado}>
-            <Text style={styles.buttonText}>=</Text>
+          <TouchableOpacity style={styles.boton_operaciones} onPress={calcularResultado}>
+            <Text style={styles.buttonText_trig}>=</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -267,30 +267,35 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   boton_numeros: {
-    backgroundColor: '#000',
+    backgroundColor: '#EEECFA',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 2,
-    borderBlockColor: '#fff'
+    borderRadius: 4,
   },
   boton_operaciones: {
-    backgroundColor: '#131313',
+    backgroundColor: '#1F539F',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 2,
-    borderBlockColor: '#fff'
+    borderRadius: 4,
   },
-  boton_igual: {
-    backgroundColor: '#701338',
+  boton_trig: {
+    backgroundColor: '#383B40',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 2,
-    borderBlockColor: '#fff'
+    borderRadius: 4,
   },
+
   buttonText: {
+    color: '#000',
+    fontSize: 23,
+  },
+  buttonText_trig: {
     color: '#fff',
     fontSize: 23,
   },
