@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat en tiempo real</title>
+</head>
+<body>
+    <div>
+        <ul id="chat"></ul>
+    </div>
+    <input type="text" id="message" placeholder="Escribe tu mensaje">
+    <button onclick="sendMessage()">Enviar</button>
+    <script>
+        // Crear una conexión WebSocket con el servidor en localhost en el puerto 3000.
+        const socket = new WebSocket('ws://localhost:3000');
+        const chat = document.getElementById('chat');
+        const messageInput = document.getElementById('message');
+
+        // Escuchar eventos cuando se recibe un mensaje desde el servidor.
+        socket.addEventListener('message', (event) => {
+            // Crear un nuevo elemento de lista (li) para mostrar el mensaje.
+            const message = document.createElement('li');
+            // Establecer el contenido de texto del elemento li con el mensaje recibido.
+            message.textContent = event.data;
+            // Agregar el mensaje a la lista en la interfaz de usuario.
+            chat.appendChild(message);
+        });
+
+        // Función para enviar un mensaje al servidor cuando se hace clic en el botón "Enviar".
+        function sendMessage() {
+            // Obtener el valor del campo de entrada de texto.
+            const message = messageInput.value;
+            // Enviar el mensaje al servidor a través de la conexión WebSocket.
+            socket.send(message);
+            // Limpiar el campo de entrada después de enviar el mensaje.
+            messageInput.value = '';
+        }
+    </script>
+</body>
+</html>
