@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image } fro
 import * as ImagePicker from 'expo-image-picker';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as Sharing from 'expo-sharing';
 import  imagen  from "./assets/perfil_icono.png";
 
 function Inicio({ navigation }) {
@@ -91,22 +92,44 @@ function Perfil({ route, navigation }) {
       setImage(result.assets[0].uri);
     }
   };
+
+  const handleShare = async () => {
+    if (!image) {
+      // Si no hay imagen seleccionada, no hay nada que compartir
+      return;
+    }
+
+    try {
+      const shared = await Sharing.shareAsync(image);
+      if (shared) {
+        console.log('¡Imagen compartida exitosamente!');
+      } else {
+        console.log('El compartido fue cancelado.');
+      }
+    } catch (error) {
+      console.log('Ocurrió un error al compartir:', error.message);
+    }
+  };
+
   
   return (
     <View style={styles.container}>
       <View style={styles.boton_perfil}>
       <Image source={image ? { uri: image } : imagen} style={styles.img}></Image>
       </View>
-      <TouchableOpacity style={styles.button_imagen} >
-        <Text style={styles.buttonText_imagen} onPress={pickImage}>Subir imagen</Text>
+      <TouchableOpacity style={styles.button_imagen} onPress={pickImage}>
+        <Text style={styles.buttonText_imagen}>Subir imagen</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button_imagen} >
-        <Text style={styles.buttonText_imagen} onPress={handleTakePhoto}>Tomar foto</Text>
+      <TouchableOpacity style={styles.button_imagen} onPress={handleTakePhoto}>
+        <Text style={styles.buttonText_imagen}>Tomar foto</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button_imagen} onPress={handleShare}>
+        <Text style={styles.buttonText_imagen}>Compartir imagen</Text>
       </TouchableOpacity>
       <Text style={styles.title_perfil}>Usuario: {usuario}</Text>
       <Text style={styles.title_perfil}>Contraseña: {contraseña}</Text>
-      <TouchableOpacity style={styles.button} >
-        <Text style={styles.buttonText} onPress={() => navigation.goBack()}>Regresar</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
+        <Text style={styles.buttonText}>Regresar</Text>
       </TouchableOpacity>
     </View>
   );
@@ -118,8 +141,8 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Inicio de sesión" component={Inicio} />
-        <Stack.Screen name="Perfil" component={Perfil} />
+        <Stack.Screen name="Inicio de sesión" component={Inicio} options={{headerShown:false}}/>
+        <Stack.Screen name="Perfil" component={Perfil} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -154,7 +177,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000', 
     borderRadius: 5,
   },
-  button: {
+  button_imagen: {
     backgroundColor: '#000', 
     padding: 10,
     borderRadius: 20,
@@ -164,7 +187,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     margin: 10
   },
-  button_imagen: {
+  button: {
     backgroundColor: '#EA005E', 
     padding: 10,
     borderRadius: 20,
@@ -184,12 +207,12 @@ const styles = StyleSheet.create({
     width: 200, 
     borderRadius: 100,
   },
-  buttonText: {
+  buttonText_imagen: {
     color: '#EA005E',
     fontSize: 16,
     textAlign: 'center',
   },
-  buttonText_imagen: {
+  buttonText: {
     color: '#fff',
     fontSize: 16,
     textAlign: 'center',
